@@ -1,11 +1,11 @@
 import React from 'react'
 import { MdOutlineDelete } from "react-icons/md";
-import useDeleteNote from '../hooks/useDeleteNote';
 import { useState,useEffect } from 'react';
+import useNotes from '../hooks/useNotes';
 
 const Note = ({id, title, description, setNotes}) => {
 
-  const {loading, remove} = useDeleteNote();
+  const {loading, remove} = useNotes();
   
   
   const handleSubmit = async (id,e)=>{

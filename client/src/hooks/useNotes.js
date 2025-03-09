@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import toast from "react-hot-toast"
 
-const useAddNotes = () => {
+const useNotes = () => {
   const [loading, setLoading] = useState(false);
 
   const add = async ({ title, description }) => {
@@ -32,8 +32,23 @@ const useAddNotes = () => {
     }
   }
 
-
-  return { loading, add };
+  const remove = async (id) => {
+    setLoading(true)
+    try {
+        const res = await fetch(`api/notes/${id}`, {
+            method: "DELETE",
+        })
+        toast.success("Note Removed")
+    } catch (error) {
+        toast.error(error.message)
+        console.log(error);
+    } finally {
+        setLoading(false)
+    }
 }
 
-export default useAddNotes
+
+  return { loading, add, remove };
+}
+
+export default useNotes

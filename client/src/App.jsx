@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Note from './component/Note'
 import './App.css'
-import useAddNotes from './hooks/useAddNotes';
+import useNotes from './hooks/useNotes';
 import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     description: ""
   })
 
-  const { loading, add } = useAddNotes();
+  const { loading, add } = useNotes();
 
 
   useEffect(() => {
